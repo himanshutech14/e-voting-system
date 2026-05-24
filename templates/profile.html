@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="welcome-bar">Welcome</div>
+<div class="profile-wrap mx-auto">
+    <div class="do-card mb-4">
+        <div class="do-card-head">Your Profile</div>
+        <div class="do-card-body bg-white text-dark">
+            <ul>
+                <li><b>Name:</b> {{ user.first_name }} {{ user.last_name }}</li>
+                <li><b>Username:</b> {{ user.username }}</li>
+                <li><b>Email:</b> {{ user.email }}</li>
+                <li><b>Status:</b> {% if user.verified %}Verified{% else %}Not Verified{% endif %}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="do-card">
+        <div class="do-card-head">Verification of voter</div>
+        <form method="POST" class="do-card-body bg-white text-dark">
+            <p>Enter Following Details to verify Your Eligibility</p>
+            <label>Gender</label>
+            <input class="form-control mb-3" name="gender" placeholder="Gender" value="{{ user.gender or '' }}" required>
+            <label>Date Of Birth</label>
+            <input class="form-control mb-3" name="dob" type="date" value="{{ user.dob or '' }}" required>
+            <button class="btn btn-outline-dark">Verify</button>
+            {% if user.verified %}<a href="/vote" class="btn btn-dark">Go To Vote</a>{% endif %}
+        </form>
+    </div>
+</div>
+{% endblock %}

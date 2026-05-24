@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="do-card">
+            <div class="do-card-head">Candidates Result</div>
+            <div class="do-card-body bg-white text-dark">
+                <table class="table table-bordered align-middle">
+                    <tr><th>Logo</th><th>Name</th><th>Votes</th></tr>
+                    {% for c in candidates %}
+                    <tr>
+                        <td><img class="result-logo" src="{{ url_for('static', filename='images/' + c.logo) }}"></td>
+                        <td>{{ c.name }}</td>
+                        <td>{{ c.votes }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="do-card">
+            <div class="do-card-head">Registered Users</div>
+            <div class="do-card-body bg-white text-dark table-responsive">
+                <table class="table table-bordered">
+                    <tr><th>Name</th><th>Username</th><th>Verified</th><th>Voted</th></tr>
+                    {% for u in users %}
+                    <tr>
+                        <td>{{ u.first_name }} {{ u.last_name }}</td>
+                        <td>{{ u.username }}</td>
+                        <td>{{ 'Yes' if u.verified else 'No' }}</td>
+                        <td>{{ 'Yes' if u.has_voted else 'No' }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

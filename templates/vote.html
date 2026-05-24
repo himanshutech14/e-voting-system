@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-card mx-auto">
+    <div class="do-card-head">Cast Your Vote</div>
+    <form method="POST" class="do-card-body">
+        {% for c in candidates %}
+        <label class="candidate-box">
+            <input type="radio" name="candidate" value="{{ c.id }}" required>
+            <img src="{{ url_for('static', filename='images/' + c.logo) }}" alt="{{ c.name }} logo">
+            <span>{{ c.name }}</span>
+        </label>
+        {% endfor %}
+        <button class="btn btn-dark mt-3">Submit Vote</button>
+    </form>
+</div>
+{% endblock %}

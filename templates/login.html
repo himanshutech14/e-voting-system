@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-card mx-auto">
+    <div class="do-card-head">Login Page</div>
+    <form method="POST" class="do-card-body">
+        <label>User Name</label>
+        <input class="form-control mb-3" name="username" placeholder="Enter your username" required>
+        <label>Confirm Password</label>
+        <input class="form-control mb-3" name="password" type="password" placeholder="Enter your password" required>
+        <button class="btn btn-dark">Login</button>
+        <button class="btn btn-outline-dark" type="reset">Reset</button>
+    </form>
+</div>
+{% endblock %}
